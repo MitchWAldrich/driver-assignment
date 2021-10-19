@@ -12,28 +12,62 @@ function App() {
     state,
     setDriver
   } = useApplicationData();
+  
+  const unassignedOrders = state.orders.filter(order => order.driver_id === 1);
+  const parsedUnassignedOrders = unassignedOrders.map(unassignedOrder => {
 
-  const driverBoards = state.drivers.map( driver => {
-    getOrdersByDriverId(state.orders, driver.id);
-  // const parsedDriverBoards = driverBoard.map(driver => {
+    return (
+      <Order
+      key={unassignedOrder.id}
+      id={unassignedOrder.id}
+      className="order"
+      description={unassignedOrder.description}
+      cost={unassignedOrder.cost}
+      revenue={unassignedOrder.revenue}
+      >
+      </Order>
+    )
+    
+  })
+
+  const assignedDriverBoards = state.drivers.filter(assigned => assigned.id !== 1);
+  const driverBoards = assignedDriverBoards.map(driver => {
+    
+    const driversOrders = state.orders.filter(order => order.driver_id === driver.id);
+    const parsedOrders = driversOrders.map(driverOrder => {
+
+      return (
+        <Order
+        key={driverOrder.id}
+        id={driverOrder.id}
+        className="order"
+        description={driverOrder.description}
+        cost={driverOrder.cost}
+        revenue={driverOrder.revenue}
+        >
+        </Order>
+      )
+    })
+
     return (
       <Board
         key={driver.id} 
         id={driver.id}
         className="board"
         >
-          <Order id="order-1" className="order">
-          </Order>
+        {driver.name}
+        {parsedOrders}
         </Board>
     )
   });
+
 
   return (
     <div className="App">
      <main className="flexbox">
        <Board id="board-1" className="board">
-         <Order id="order-1" className="order">
-         </Order>
+         Unassigned Orders
+         {parsedUnassignedOrders}
        </Board>
 
        {driverBoards}
