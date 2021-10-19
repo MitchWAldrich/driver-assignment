@@ -22,7 +22,7 @@ function Order (props) {
       onDragStart={dragStart}
       onDragOver={dragOver}
     >
-
+    Order Information
     </div>
   )
 }
