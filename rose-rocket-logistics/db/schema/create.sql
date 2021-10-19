@@ -8,9 +8,9 @@ CREATE TABLE drivers (
 
 CREATE TABLE orders (
   id SERIAL PRIMARY KEY NOT NULL,
-  driver_id INTEGER REFERENCES drivers(id) ON DELETE CASCADE,
+  driver_id INTEGER DEFAULT 1 REFERENCES drivers(id) ON DELETE CASCADE,
   description VARCHAR(255) NOT NULL,
-  cost INTEGER,
-  revenue INTEGER,
-  isAssigned BOOLEAN DEFAULT false
+  cost NUMERIC(20,2),
+  revenue NUMERIC(20,2),
+  isAssigned BOOLEAN DEFAULT 'false'
 );

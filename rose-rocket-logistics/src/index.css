@@ -41,11 +41,14 @@ code {
 }
 
 .flexbox .board .order {
+  flex-direction: row;
+  justify-content: space-between;
   padding: 15px 25px;
   cursor: pointer;
   margin-bottom: 15px;
   background-color: white;
   color: black;
+  font-size: 12px;
 }
 
 p {
