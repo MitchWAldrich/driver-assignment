@@ -10,6 +10,9 @@ const app = express();
 
 const db = require("./db");
 
+const drivers = require("./routes/drivers");
+const orders = require("./routes/orders");
+
 function read(file) {
   return new Promise((resolve, reject) => {
     fs.readFile(
@@ -32,8 +35,11 @@ module.exports = function application(
   app.use(helmet());
   app.use(bodyparser.json());
 
+  app.use("/api", drivers(db));
+  app.use("/api", orders(db));
+
   Promise.all([
-    read(path.resolve(__dirname, `dv/schema/create.sql`)),
+    read(path.resolve(__dirname, `db/schema/create.sql`)),
     read(path.resolve(__dirname, `db/seeds/seeds.sql`)),
   ])
     .then(([create, seed]) => {
