@@ -22,7 +22,10 @@ function Order (props) {
       onDragStart={dragStart}
       onDragOver={dragOver}
     >
-    Order Information
+      <p>{props.description}</p>
+      <br></br>
+      <p>Revenue: ${props.revenue}</p>
+      <p>Cost: ${props.cost}</p>
     </div>
   )
 }
