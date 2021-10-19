@@ -1,0 +1,13 @@
+CREATE TABLE drivers (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255)
+);
+
+CREATE TABLE orders (
+  id SERIAL PRIMARY KEY NOT NULL,
+  driver_id INTEGER REFERENCES drivers(id) ON DELETE CASCADE,
+  description VARCHAR(255) NOT NULL,
+  cost INTEGER,
+  revenue INTEGER,
+  isAssigned BOOLEAN DEFAULT false
+);
