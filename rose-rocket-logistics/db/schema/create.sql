@@ -11,6 +11,5 @@ CREATE TABLE orders (
   driver_id INTEGER DEFAULT 1 REFERENCES drivers(id) ON DELETE CASCADE,
   description VARCHAR(255) NOT NULL,
   cost NUMERIC(20,2),
-  revenue NUMERIC(20,2),
-  isAssigned BOOLEAN DEFAULT 'false'
+  revenue NUMERIC(20,2)
 );
