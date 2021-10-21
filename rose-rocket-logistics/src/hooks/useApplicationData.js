@@ -20,15 +20,15 @@ export default function useApplicationData() {
     })
   }, []);
 
-  const editOrder = (order, driver_id, description, cost, revenue, isAssigned) => {
+  const editOrder = (order, driver_id, description, cost, revenue) => {
+
     return (
       axios.put('/api/orders/:id', {
         ...order,
         driver_id,
         description,
         cost,
-        revenue,
-        isAssigned
+        revenue
       }).then(() => {
         console.log('order updated!')
       }).catch((e) => {
@@ -37,17 +37,16 @@ export default function useApplicationData() {
     )
   }
 
-  const editDriver = (order, driverId) => {
-    return (
-      axios.put('/api/orders/:id', {
+  const editDriver = async (order, driverId) => {
+    console.log('orderED', order)
+    return await axios.put(`/api/orders/${order.id}`, {
         ...order,
         driver_id: driverId
-      }).then(() => {
-        console.log('driver updated!')
+      }).then((result) => {
+        console.log('driver updated!', result)
       }).catch((e) => {
-        console.log(e.message)
+        console.log(e.response.data)
       })
-    )
   }
 
   return { state, setDriver, editOrder, editDriver }
