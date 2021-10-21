@@ -10,10 +10,12 @@ import { getOrdersByDriverId } from "./helpers/selectors";
 function App() {
   const {
     state,
-    setDriver
+    setDriver,
+    editOrder,
+    editDriver
   } = useApplicationData();
   
-  const unassignedOrders = state.orders.filter(order => order.driver_id === 1);
+  const unassignedOrders = state.orders.filter(order => order.driver_id === null);
   const parsedUnassignedOrders = unassignedOrders.map(unassignedOrder => {
 
     return (
@@ -30,7 +32,7 @@ function App() {
     
   })
 
-  const assignedDriverBoards = state.drivers.filter(assigned => assigned.id !== 1);
+  const assignedDriverBoards = state.drivers.filter(assigned => assigned.id !== null);
   const driverBoards = assignedDriverBoards.map(driver => {
     
     const driversOrders = state.orders.filter(order => order.driver_id === driver.id);
@@ -54,6 +56,8 @@ function App() {
         key={driver.id} 
         id={driver.id}
         className="board"
+        state={state}
+        editDriver={editDriver}
         >
         {driver.name}
         {parsedOrders}
@@ -65,7 +69,11 @@ function App() {
   return (
     <div className="App">
      <main className="flexbox">
-       <Board id="board-1" className="board">
+       <Board 
+         className="board"
+         state={state}
+         editDriver={editDriver}
+       >
          Unassigned Orders
          {parsedUnassignedOrders}
        </Board>
