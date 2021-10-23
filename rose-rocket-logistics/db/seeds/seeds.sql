@@ -17,4 +17,12 @@ VALUES
 (2, 'Cheetos', 310.38, 7231.98),
 (3, 'Rose Rocket Swag Shirts', 350.79, 5404.24),
 (null, 'Fresh Produce', 240.17, 867.12),
-(null, 'Wood and Lumber', 312.14, 2341.10)
+(null, 'Wood and Lumber', 312.14, 2341.10);
+
+INSERT INTO orders (driver_id, description, revenue)
+VALUES 
+(null, 'Sneakers', 324.12);
+
+INSERT INTO orders (driver_id, description, cost)
+VALUES 
+(null, 'Plants', 432.13);
