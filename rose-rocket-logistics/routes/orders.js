@@ -8,7 +8,7 @@ module.exports = db => {
     });
   });
   
-  router.put("/orders/:id", (request, response) => {
+  router.put("/orders/", (request, response) => {
     const { id, driver_id, description, cost, revenue } = request.body;
 
     db.query(`
@@ -16,9 +16,10 @@ module.exports = db => {
     SET driver_id = $1, description = $2, cost = $3, revenue = $4
     WHERE id = $5
     `, [driver_id, description, cost, revenue, id])
-    // console.log('updated order:', request.body)
     .then((results) => {
+      console.log('res', results.rows)
       response.status(200)
+      return response.json(results.rows)
     })
     .catch((e) => {
       console.log(e.message)
