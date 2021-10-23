@@ -57,7 +57,11 @@ function App() {
     <div className="App">
      <main className="flexbox">
        <Board
-       className="board">
+       className="board"
+       state={state}
+         editDriver={editDriver}
+         editOrder={editOrder}
+      >
          Unassigned Orders
        <UnassignedOrder
          className="order"
