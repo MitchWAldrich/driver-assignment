@@ -16,36 +16,54 @@ export default function useApplicationData() {
       axios.get('/api/orders')
     ]).then((all) => {
       const [drivers, orders] = all;
-      setState(prev => ({...prev, drivers: drivers.data, orders: orders.data}));
+      setState(prev => ({...prev, drivers: drivers.data, orders: orders.data}))
     })
   }, []);
 
   const editOrder = (order, driver_id, description, cost, revenue) => {
 
-    return (
-      axios.put('/api/orders/:id', {
+    return axios.put(`/api/orders/`, {
         ...order,
         driver_id,
         description,
         cost,
         revenue
-      }).then(() => {
-        console.log('order updated!')
-      }).catch((e) => {
-        console.log(e.message)
+      }).then((result) => {
+        console.log('order updated!', result)
+      }).catch((error) => {
+        if (error.response) {
+          // Request made and server responded
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+        }
       })
-    )
   }
 
-  const editDriver = async (order, driverId) => {
+  const editDriver = (order, driverId) => {
     console.log('orderED', order)
-    return await axios.put(`/api/orders/${order.id}`, {
-        ...order,
-        driver_id: driverId
-      }).then((result) => {
+    return axios.put(`/api/orders/`, { ...order, driver_id: driverId })
+      .then((result) => {
         console.log('driver updated!', result)
-      }).catch((e) => {
-        console.log(e.response.data)
+      }).catch((error) => {
+        if (error.response) {
+          // Request made and server responded
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+        }
       })
   }
 
