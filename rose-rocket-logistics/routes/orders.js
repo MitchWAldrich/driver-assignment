@@ -17,7 +17,6 @@ module.exports = db => {
     WHERE id = $5
     `, [driver_id, description, cost, revenue, id])
     .then((results) => {
-      console.log('res', results.rows)
       response.status(200)
       return response.json(results.rows)
     })
