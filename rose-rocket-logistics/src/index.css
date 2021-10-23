@@ -18,6 +18,13 @@ code {
     monospace;
 }
 
+.editField {
+  border-radius: 5px;
+  margin-left: 5px;
+  width: 70px;
+  
+}
+
 .flexbox {
   display: flex;
   justify-content: space-between;
@@ -49,6 +56,11 @@ code {
   background-color: white;
   color: black;
   font-size: 12px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
 }
 
 p {
