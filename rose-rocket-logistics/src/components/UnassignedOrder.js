@@ -2,9 +2,25 @@ import Board from './Board';
 import Order from './Order';
 import IncompleteOrder from './IncompleteOrder';
 
-import EditOrder from '../hooks/editOrder';
+import { getOrderByOrderId } from '../helpers/selectors';
 
 export default function UnassignedOrder(props) {
+  const drop = e => {
+    e.preventDefault();
+    const order_id = e.dataTransfer.getData('order_id');
+    const orderObject = getOrderByOrderId(props.state.orders, Number(order_id))
+    
+    const order = document.getElementById(order_id);
+    order.style.display = 'block';
+
+    e.target.appendChild(order);
+    
+    props.editDriver(orderObject, props.id)
+  }
+
+  const dragOver = e => {
+    e.preventDefault();
+  }
    
   const unassignedOrders = props.state.orders.filter(order => order.driver_id === null)
 
@@ -39,6 +55,8 @@ export default function UnassignedOrder(props) {
       cost={unassignedIncompleteOrder.cost}
       revenue={unassignedIncompleteOrder.revenue}
       editOrder={props.editOrder}
+      onDrop={drop}
+      onDragOver={dragOver}
       >
       </IncompleteOrder>
     )
