@@ -8,9 +8,8 @@ function Form(props) {
   return (
     <div className={props.className}>
       <p>{props.description}</p>
-      <br></br>
       <p>Revenue:</p>
-      <form onSubmit={props.editOrder(props.orderObject, props.driverId, props.description, cost, revenue)}>
+      <form className={'input'} onSubmit={props.editOrder(props.orderObject, props.driverId, props.description, cost, revenue)}>
         <input
           className="editField"
           name="Revenue"
@@ -28,7 +27,8 @@ function Form(props) {
           onChange={(event) => setCost(event.target.value)}
           value={cost}
         />
-        <Button variant="outline-primary" type="submit">Submit</Button>{' '}
+        <br></br>
+        <Button className={'button'} variant="outline-primary" type="submit">Submit</Button>{' '}
       </form>
     </div>
   )
