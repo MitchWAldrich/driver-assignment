@@ -27,7 +27,7 @@ function Order(props) {
         onDragStart={dragStart}
         onDragOver={dragOver}
       >
-        <p>{props.description}</p>
+        <p className={'description'}>{props.description}</p>
         <p>Revenue: ${props.revenue}</p>
         <p>Cost: ${props.cost}</p>
         <img

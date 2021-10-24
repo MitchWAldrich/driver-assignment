@@ -13,73 +13,81 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.button {
-  vertical-align: sub; 
-}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-.description {
-  font-size: 15px;
-  text-decoration: underline;
-}
-
-.editField {
-  border-radius: 5px;
-  margin-left: 5px;
-  width: 70px;
+  }
   
-}
+  .description {
+    font-size: 15px;
+    text-decoration: underline;
+  }
+  
+  .editField {
+    border-radius: 5px;
+    margin-left: 5px;
+    width: 70px;
+  }
 
-.flexbox {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+  .editForm {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .flexbox {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    
+    overflow: hidden;
+    
+    margin: 0 auto;
+    padding: 15px;
+  }
+  
+  .flexbox .board {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+    padding: 15px;
+    background-color: #1e55bf;
+    color: white;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+  }
+  
+  .flexbox .board .order {
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 5px;
+    padding: 15px 25px;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 7px;
+    background-color: white;
+    color: black;
+    font-size: 12px;
+    position: relative;
+  }
+  
+  .formSubmit {
+    margin-top: 15px;
+  }
 
-  overflow: hidden;
+  .icon {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+  }
+  
+  p {
+    color: black;
+  }
+  
 
-  margin: 0 auto;
-  padding: 15px;
-}
-
-.flexbox .board {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 300px;
-  padding: 15px;
-  background-color: #1e55bf;
-  color: white;
-}
-
-.flexbox .board .order {
-  flex-direction: row;
-  justify-content: space-between;
-  border-radius: 5px;
-  padding: 15px 25px;
-  cursor: pointer;
-  margin-top: 15px;
-  margin-bottom: 7px;
-  background-color: white;
-  color: black;
-  font-size: 12px;
-}
-
-.form {
-  display: inline;
-}
-
-.icon {
-  width: 20px;
-  height: 20px;
-  float: right;
-}
-
-p {
-  color: black;
-}
-
-
+  
