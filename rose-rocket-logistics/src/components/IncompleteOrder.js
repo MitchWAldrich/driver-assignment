@@ -17,10 +17,9 @@ function IncompleteOrder(props) {
         id={props.id}
         className={props.className}
       >
-        <p>{props.description}</p>
-        <br></br>
+        <p className={'description'}>{props.description}</p>
         <p>Revenue:</p>
-        <form onSubmit={props.editOrder(props.orderObject, props.driverId, props.description, props.cost, revenue)}>
+        <form className={'input'} onSubmit={props.editOrder(props.orderObject, props.driverId, props.description, props.cost, revenue)}>
           <input
             className="editField"
             name="Revenue"
@@ -36,7 +35,8 @@ function IncompleteOrder(props) {
             alt="Edit"
             onClick={handleClick}
           />
-          <Button variant="outline-primary" type="submit">Submit</Button>{' '}
+          
+          <Button className={'button'} variant="outline-primary" type="submit">Submit</Button>{' '}
         </form>
       </div>
     )
@@ -47,8 +47,7 @@ function IncompleteOrder(props) {
         id={props.id}
         className={props.className}
       >
-        <p>{props.description}</p>
-        <br></br>
+        <p className={'description'}>{props.description}</p>
         <p>Revenue: ${props.revenue}
         </p>
         <p>Cost:</p>
@@ -67,7 +66,7 @@ function IncompleteOrder(props) {
             alt="Edit"
             onClick={handleClick}
           />
-          <Button variant="outline-primary" type="submit">Submit</Button>{' '}
+          <Button className={'button'} variant="outline-primary" type="submit">Submit</Button>{' '}
         </form>
       </div>
     )
@@ -79,11 +78,10 @@ function IncompleteOrder(props) {
         id={props.id}
         className={props.className}
       >
-        <p>{props.description}</p>
-        <br></br>
+        <p className={'description'}>{props.description}</p>
         <p>Revenue: ${props.revenue}</p>
         <p>Cost: ${props.cost}</p>
-        <Button variant="outline-primary" onSubmit={props.editOrder(props.orderObject, props.driver_id, props.description, props.cost, props.revenue)}>Submit</Button>{' '}
+        <Button className={'button'} variant="outline-primary" onSubmit={props.editOrder(props.orderObject, props.driver_id, props.description, props.cost, props.revenue)}>Submit</Button>{' '}
       </div>
     )
   }
