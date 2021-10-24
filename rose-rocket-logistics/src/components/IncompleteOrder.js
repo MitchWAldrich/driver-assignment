@@ -1,4 +1,3 @@
-import Edit from './Edit';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 
@@ -20,6 +19,11 @@ function IncompleteOrder (props) {
   
   const dragOver = e => {
     e.stopPropagation();
+  }
+
+  const handleClick = e => {
+    e.preventDefault();
+    props.transition('EDIT', props.id)
   }
 
   if (props.driverId === null && props.revenue === null) {
@@ -44,7 +48,12 @@ function IncompleteOrder (props) {
           value={revenue}
         />
         <p>Cost: ${props.cost}</p>
-        <Edit></Edit>
+        <img
+          className="icon"
+          src="images/edit.png"
+          alt="Edit"
+          onClick={handleClick}
+        />
         <Button variant="outline-primary" type="submit">Submit</Button>{' '}
         </form>
       </div>
@@ -73,7 +82,12 @@ function IncompleteOrder (props) {
             onChange={(event) => setCost(event.target.value)}
             value={cost}
             />
-          <Edit></Edit>
+          <img
+          className="icon"
+          src="images/edit.png"
+          alt="Edit"
+          onClick={handleClick}
+        />
           <Button variant="outline-primary" type="submit">Submit</Button>{' '}
           </form>
         </div>
@@ -93,7 +107,6 @@ function IncompleteOrder (props) {
         <br></br>
         <p>Revenue: ${props.revenue}</p>
         <p>Cost: ${props.cost}</p>
-        <Edit></Edit>
         <Button variant="outline-primary" onSubmit={props.editOrder(props.orderObject, props.driver_id, props.description, props.cost, props.revenue)}>Submit</Button>{' '}
       </div>
     )
