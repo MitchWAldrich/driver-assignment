@@ -7,9 +7,10 @@ function Form(props) {
 
   return (
     <div className={props.className}>
-      <p>{props.description}</p>
-      <p>Revenue:</p>
-      <form className={'input'} onSubmit={props.editOrder(props.orderObject, props.driverId, props.description, cost, revenue)}>
+      <p className={'description'}>{props.description}</p>
+      <form className={'editForm'} onSubmit={props.editOrder(props.orderObject, props.driverId, props.description, cost, revenue)}>
+      <label>
+      Revenue:
         <input
           className="editField"
           name="Revenue"
@@ -17,8 +18,10 @@ function Form(props) {
           placeholder="Revenue"
           onChange={(event) => setRevenue(event.target.value)}
           value={revenue}
-        />
-        <p>Cost:</p>
+          />
+          </label>
+        <label>
+          Cost:
         <input
           className="editField"
           name="Cost"
@@ -26,9 +29,9 @@ function Form(props) {
           placeholder="Cost"
           onChange={(event) => setCost(event.target.value)}
           value={cost}
-        />
-        <br></br>
-        <Button className={'button'} variant="outline-primary" type="submit">Submit</Button>{' '}
+          />
+          </label>
+        <Button className={"formSubmit"} variant="outline-primary" type="submit">Submit</Button>{' '}
       </form>
     </div>
   )

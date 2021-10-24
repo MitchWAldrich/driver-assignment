@@ -18,8 +18,9 @@ function IncompleteOrder(props) {
         className={props.className}
       >
         <p className={'description'}>{props.description}</p>
-        <p>Revenue:</p>
-        <form className={'input'} onSubmit={props.editOrder(props.orderObject, props.driverId, props.description, props.cost, revenue)}>
+        <form onSubmit={props.editOrder(props.orderObject, props.driverId, props.description, props.cost, revenue)}>
+        <label>
+          Revenue:
           <input
             className="editField"
             name="Revenue"
@@ -28,6 +29,7 @@ function IncompleteOrder(props) {
             onChange={(event) => setRevenue(event.target.value)}
             value={revenue}
           />
+          </label>
           <p>Cost: ${props.cost}</p>
           <img
             className="icon"
@@ -35,8 +37,7 @@ function IncompleteOrder(props) {
             alt="Edit"
             onClick={handleClick}
           />
-          
-          <Button className={'button'} variant="outline-primary" type="submit">Submit</Button>{' '}
+          <Button variant="outline-primary" type="submit">Submit</Button>{' '}
         </form>
       </div>
     )
@@ -48,10 +49,9 @@ function IncompleteOrder(props) {
         className={props.className}
       >
         <p className={'description'}>{props.description}</p>
-        <p>Revenue: ${props.revenue}
-        </p>
-        <p>Cost:</p>
         <form onSubmit={props.editOrder(props.orderObject, props.driverId, props.description, cost, props.revenue)}>
+        <label>
+        Cost:
           <input
             className="editField"
             name="Cost"
@@ -59,14 +59,16 @@ function IncompleteOrder(props) {
             placeholder="Cost"
             onChange={(event) => setCost(event.target.value)}
             value={cost}
-          />
+            />
+          </label>
+            <p>Revenue: ${props.revenue}</p>
           <img
             className="icon"
             src="images/edit.png"
             alt="Edit"
             onClick={handleClick}
           />
-          <Button className={'button'} variant="outline-primary" type="submit">Submit</Button>{' '}
+          <Button variant="outline-primary" type="submit">Submit</Button>{' '}
         </form>
       </div>
     )
@@ -81,7 +83,7 @@ function IncompleteOrder(props) {
         <p className={'description'}>{props.description}</p>
         <p>Revenue: ${props.revenue}</p>
         <p>Cost: ${props.cost}</p>
-        <Button className={'button'} variant="outline-primary" onSubmit={props.editOrder(props.orderObject, props.driver_id, props.description, props.cost, props.revenue)}>Submit</Button>{' '}
+        <Button variant="outline-primary" onSubmit={props.editOrder(props.orderObject, props.driver_id, props.description, props.cost, props.revenue)}>Submit</Button>{' '}
       </div>
     )
   }
