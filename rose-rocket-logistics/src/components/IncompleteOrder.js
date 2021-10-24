@@ -7,19 +7,19 @@ function IncompleteOrder (props) {
   const [revenue, setRevenue] = useState(props.revenue)
 
 
-  const dragStart = e => {
-    const target = e.target;
+  // const dragStart = e => {
+  //   const target = e.target;
 
-    e.dataTransfer.setData('order_id', target.id);
+  //   e.dataTransfer.setData('order_id', target.id);
 
-    setTimeout(() => {
-      target.style.display = "none";
-    }, 0);
-  }
+  //   setTimeout(() => {
+  //     target.style.display = "none";
+  //   }, 0);
+  // }
   
-  const dragOver = e => {
-    e.stopPropagation();
-  }
+  // const dragOver = e => {
+  //   e.stopPropagation();
+  // }
 
   const handleClick = e => {
     e.preventDefault();
@@ -31,9 +31,6 @@ function IncompleteOrder (props) {
       <div
         id={props.id}
         className={props.className}
-        draggable="true"
-        onDragStart={dragStart}
-        onDragOver={dragOver}
       >
         <p>{props.description}</p>
         <br></br>
@@ -64,9 +61,6 @@ function IncompleteOrder (props) {
       <div
       id={props.id}
       className={props.className}
-      draggable="true"
-      onDragStart={dragStart}
-          onDragOver={dragOver}
           >
           <p>{props.description}</p>
           <br></br>
@@ -99,9 +93,6 @@ function IncompleteOrder (props) {
       <div
         id={props.id}
         className={props.className}
-        draggable="true"
-        onDragStart={dragStart}
-        onDragOver={dragOver}
       >
         <p>{props.description}</p>
         <br></br>
