@@ -29,7 +29,7 @@ export default function useApplicationData() {
         cost,
         revenue
       }).then((result) => {
-        console.log('order updated!', result)
+        console.log('order updated!')
       }).catch((error) => {
         if (error.response) {
           // Request made and server responded
@@ -50,7 +50,7 @@ export default function useApplicationData() {
     console.log('orderED', order)
     return axios.put(`/api/orders/`, { ...order, driver_id: driverId })
       .then((result) => {
-        console.log('driver updated!', result)
+        console.log('driver updated!')
       }).catch((error) => {
         if (error.response) {
           // Request made and server responded
