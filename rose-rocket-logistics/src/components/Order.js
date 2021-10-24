@@ -1,5 +1,3 @@
-import Edit from './Edit';
-
 function Order (props) {
 
   const dragStart = e => {
@@ -15,7 +13,11 @@ function Order (props) {
   const dragOver = e => {
     e.stopPropagation();
   }
-  console.log(props.id)
+  const handleClick = e => {
+    e.preventDefault();
+    props.transition('EDIT', props.id)
+  }
+
   if (props.driverId === null) {
     return (
       <div
@@ -29,7 +31,12 @@ function Order (props) {
         <br></br>
         <p>Revenue: ${props.revenue}</p>
         <p>Cost: ${props.cost}</p>
-        <Edit></Edit>
+        <img
+          className="icon"
+          src="images/edit.png"
+          alt="Edit"
+          onClick={handleClick}
+        />
       </div>
     )
   } else {
