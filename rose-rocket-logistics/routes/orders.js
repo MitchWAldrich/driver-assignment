@@ -7,5 +7,23 @@ module.exports = db => {
       response.json(orders);
     });
   });
+  
+  router.put("/orders/", (request, response) => {
+    const { id, driver_id, description, cost, revenue } = request.body;
+
+    db.query(`
+    UPDATE orders
+    SET driver_id = $1, description = $2, cost = $3, revenue = $4
+    WHERE id = $5
+    `, [driver_id, description, cost, revenue, id])
+    .then((results) => {
+      response.status(200)
+      return response.json(results.rows)
+    })
+    .catch((e) => {
+      console.log(e.message)
+    })
+  })
+
   return router;
 }

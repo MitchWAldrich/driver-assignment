@@ -3,6 +3,8 @@ const path = require("path");
 
 const express = require("express");
 const bodyparser = require("body-parser");
+const pino = require('express-pino-logger')();
+
 const helmet = require("helmet");
 const cors = require("cors");
 
@@ -33,7 +35,9 @@ module.exports = function application(
 ) {
   app.use(cors());
   app.use(helmet());
+  app.use(bodyparser.urlencoded({extended: false}));
   app.use(bodyparser.json());
+  app.use(pino);
 
   app.use("/api", drivers(db));
   app.use("/api", orders(db));

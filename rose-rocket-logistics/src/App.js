@@ -1,36 +1,21 @@
 import './App.css';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Board from './components/Board';
 import Order from './components/Order';
+import UnassignedOrder from './components/UnassignedOrder';
 
 import useApplicationData from "./hooks/useApplicationData";
-import { getOrdersByDriverId } from "./helpers/selectors";
 
 function App() {
   const {
     state,
-    setDriver
+    editOrder,
+    editDriver
   } = useApplicationData();
   
-  const unassignedOrders = state.orders.filter(order => order.driver_id === 1);
-  const parsedUnassignedOrders = unassignedOrders.map(unassignedOrder => {
-
-    return (
-      <Order
-      key={unassignedOrder.id}
-      id={unassignedOrder.id}
-      className="order"
-      description={unassignedOrder.description}
-      cost={unassignedOrder.cost}
-      revenue={unassignedOrder.revenue}
-      >
-      </Order>
-    )
-    
-  })
-
-  const assignedDriverBoards = state.drivers.filter(assigned => assigned.id !== 1);
+  const assignedDriverBoards = state.drivers.filter(assigned => assigned.id !== null);
   const driverBoards = assignedDriverBoards.map(driver => {
     
     const driversOrders = state.orders.filter(order => order.driver_id === driver.id);
@@ -40,6 +25,7 @@ function App() {
         <Order
         key={driverOrder.id}
         id={driverOrder.id}
+        driverId={driverOrder.driver_id}
         className="order"
         description={driverOrder.description}
         cost={driverOrder.cost}
@@ -54,6 +40,8 @@ function App() {
         key={driver.id} 
         id={driver.id}
         className="board"
+        state={state}
+        editDriver={editDriver}
         >
         {driver.name}
         {parsedOrders}
@@ -65,11 +53,21 @@ function App() {
   return (
     <div className="App">
      <main className="flexbox">
-       <Board id="board-1" className="board">
+       <Board
+       className="board"
+       state={state}
+         editDriver={editDriver}
+         editOrder={editOrder}
+      >
          Unassigned Orders
-         {parsedUnassignedOrders}
-       </Board>
-
+       <UnassignedOrder
+         className="order"
+         state={state}
+         editDriver={editDriver}
+         editOrder={editOrder}
+       >
+       </UnassignedOrder>
+      </Board>
        {driverBoards}
      </main>
     </div>
